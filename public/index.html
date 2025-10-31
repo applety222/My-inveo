@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 게임 인벤</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>내 게임 인벤</h1>
+    <nav>
+      <a href="/">홈</a>
+      <a href="#" onclick="alert('준비 중!')">커뮤니티</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>최신 게임 소식</h2>
+    <div id="posts"></div>
+
+    <h3>새 소식 작성</h3>
+    <form id="postForm">
+      <input type="text" id="title" placeholder="제목" required>
+      <input type="text" id="game" placeholder="게임 이름" required>
+      <textarea id="content" placeholder="내용을 입력하세요" required></textarea>
+      <button type="submit">게시하기</button>
+    </form>
+  </main>
+
+  <script>
+    // 포스트 로드
+    fetch('/api/posts')
+      .then(r => r.json())
+      .then(posts => {
+        const div = document.getElementById('posts');
+        div.innerHTML = posts.map(p => `
+          <div class="post">
+            <a href="/post/${p.id}"><strong>${p.title}</strong></a>
+            <div class="meta">${p.game} • ${p.date}</div>
+          </div>
+        `).join('');
+      });
+
+    // 새 포스트
+    document.getElementById('postForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = {
+        title: e.target.title.value,
+        game: e.target.game.value,
+        content: e.target.content.value
+      };
+      await fetch('/api/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      location.reload();
+    };
+  </script>
+</body>
+</html>
