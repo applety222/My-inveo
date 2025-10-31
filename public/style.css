@@ -1,0 +1,18 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #f8f9fa; color: #212529; line-height: 1.6; }
+header { background: #1a1a1a; color: white; padding: 1rem; text-align: center; }
+header h1 { font-size: 1.5rem; }
+nav a { color: #4CAF50; margin: 0 12px; text-decoration: none; font-weight: 500; }
+.container { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
+h2 { color: #1a1a1a; margin-bottom: 15px; border-bottom: 2px solid #4CAF50; padding-bottom: 8px; }
+h3 { margin: 25px 0 10px; color: #333; }
+.post { padding: 15px 0; border-bottom: 1px solid #eee; }
+.post a { color: #1a1a1a; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+.meta { color: #666; font-size: 0.9rem; margin-top: 5px; }
+input, textarea, button {
+  width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;
+}
+textarea { min-height: 100px; resize: vertical; }
+button { background: #4CAF50; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
+button:hover { background: #45a049; }
+.back { display: inline-block; margin: 15px 0; color: #4CAF50; text-decoration: none; font-weight: 500; }
